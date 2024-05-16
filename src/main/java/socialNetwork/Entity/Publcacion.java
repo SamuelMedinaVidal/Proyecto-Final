@@ -15,19 +15,17 @@ public class Publcacion {
     private String titulo;
     private int likes;
     private String imagen_api;
-    private Blob imagen;
+    private String imagen;
     private int id_usuario;
-    private int id_comentario;
 
     public Publcacion() {}
 
-    public Publcacion(String titulo, int likes, String imagen_api, Blob imagen, int id_usuario, int id_comentario) {
+    public Publcacion(String titulo, int likes, String imagen_api, String imagen, int id_usuario) {
         this.titulo = titulo;
         this.likes = likes;
         this.imagen_api = imagen_api;
         this.imagen = imagen;
         this.id_usuario = id_usuario;
-        this.id_comentario = id_comentario;
     }
 
     public Long getId_publicacion() {
@@ -62,11 +60,11 @@ public class Publcacion {
         this.imagen_api = imagen_api;
     }
 
-    public Blob getImagen() {
+    public String getImagen() {
         return imagen;
     }
 
-    public void setImagen(Blob imagen) {
+    public void setImagen(String imagen) {
         this.imagen = imagen;
     }
 
@@ -76,13 +74,5 @@ public class Publcacion {
 
     public void setId_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
-    }
-
-    public int getId_comentario() {
-        return id_comentario;
-    }
-
-    public void setId_comentario(int id_comentario) {
-        this.id_comentario = id_comentario;
     }
 }

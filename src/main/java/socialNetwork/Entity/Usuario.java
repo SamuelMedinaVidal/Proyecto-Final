@@ -20,10 +20,11 @@ public class Usuario {
     private Date fecha_de_nacimiento;
     private String nombre_usuario;
     private String contrasena;
-    private Blob foto_de_perfil;
+    private String foto_de_perfil;
+    private boolean es_administrador;
     public Usuario(){}
 
-    public Usuario(String nombre, String apellidos, String correo, Date fecha_de_nacimiento, String nombre_usuario, String contrasena, Blob foto_de_perfil) {
+    public Usuario(String nombre, String apellidos, String correo, Date fecha_de_nacimiento, String nombre_usuario, String contrasena, String foto_de_perfil, boolean es_administrador) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.correo = correo;
@@ -31,6 +32,7 @@ public class Usuario {
         this.nombre_usuario = nombre_usuario;
         this.contrasena = contrasena;
         this.foto_de_perfil = foto_de_perfil;
+        this.es_administrador = es_administrador;
     }
 
     public Long getId_usuario() {
@@ -89,12 +91,20 @@ public class Usuario {
         this.contrasena = contrasena;
     }
 
-    public Blob getFoto_de_perfil() {
+    public String getFoto_de_perfil() {
         return foto_de_perfil;
     }
 
-    public void setFoto_de_perfil(Blob foto_de_perfil) {
+    public void setFoto_de_perfil(String foto_de_perfil) {
         this.foto_de_perfil = foto_de_perfil;
+    }
+
+    public boolean isEs_administrador() {
+        return es_administrador;
+    }
+
+    public void setEs_administrador(boolean es_administrador) {
+        this.es_administrador = es_administrador;
     }
 
     @Override
