@@ -1,13 +1,12 @@
 package socialNetwork.Entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.sql.Blob;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Usuario {
@@ -22,7 +21,12 @@ public class Usuario {
     private String contrasena;
     private String foto_de_perfil;
     private boolean es_administrador;
-    public Usuario(){}
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Publicacion> publicaciones = new ArrayList<>();
+    public Usuario() {
+        this.publicaciones = new ArrayList<>(); // Inicialización de la lista
+    }
 
     public Usuario(String nombre, String apellidos, String correo, Date fecha_de_nacimiento, String nombre_usuario, String contrasena, String foto_de_perfil, boolean es_administrador) {
         this.nombre = nombre;
@@ -33,6 +37,7 @@ public class Usuario {
         this.contrasena = contrasena;
         this.foto_de_perfil = foto_de_perfil;
         this.es_administrador = es_administrador;
+        this.publicaciones = new ArrayList<>();
     }
 
     public Long getId_usuario() {

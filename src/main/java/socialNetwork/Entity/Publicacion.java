@@ -1,14 +1,9 @@
 package socialNetwork.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-import java.sql.Blob;
+import jakarta.persistence.*;
 
 @Entity
-public class Publcacion {
+public class Publicacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_publicacion;
@@ -16,17 +11,21 @@ public class Publcacion {
     private int likes;
     private String imagen_api;
     private String imagen;
-    private int id_usuario;
 
-    public Publcacion() {}
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 
-    public Publcacion(String titulo, int likes, String imagen_api, String imagen, int id_usuario) {
+    public Publicacion() {}
+
+    public Publicacion(String titulo, int likes, String imagen_api, String imagen, Usuario usuario) {
         this.titulo = titulo;
         this.likes = likes;
         this.imagen_api = imagen_api;
         this.imagen = imagen;
-        this.id_usuario = id_usuario;
+        this.usuario = usuario;
     }
+
 
     public Long getId_publicacion() {
         return id_publicacion;
@@ -68,11 +67,11 @@ public class Publcacion {
         this.imagen = imagen;
     }
 
-    public int getId_usuario() {
-        return id_usuario;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
