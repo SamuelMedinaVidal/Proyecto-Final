@@ -24,8 +24,11 @@ public class Usuario {
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Publicacion> publicaciones = new ArrayList<>();
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comentario> comentarios = new ArrayList<>();
     public Usuario() {
-        this.publicaciones = new ArrayList<>(); // Inicialización de la lista
+        this.publicaciones = new ArrayList<>();
+        this.comentarios = new ArrayList<>();
     }
 
     public Usuario(String nombre, String apellidos, String correo, Date fecha_de_nacimiento, String nombre_usuario, String contrasena, String foto_de_perfil, boolean es_administrador) {
@@ -38,6 +41,7 @@ public class Usuario {
         this.foto_de_perfil = foto_de_perfil;
         this.es_administrador = es_administrador;
         this.publicaciones = new ArrayList<>();
+        this.comentarios = new ArrayList<>();
     }
 
     public Long getId_usuario() {
@@ -110,6 +114,22 @@ public class Usuario {
 
     public void setEs_administrador(boolean es_administrador) {
         this.es_administrador = es_administrador;
+    }
+
+    public List<Publicacion> getPublicaciones() {
+        return publicaciones;
+    }
+
+    public void setPublicaciones(List<Publicacion> publicaciones) {
+        this.publicaciones = publicaciones;
+    }
+
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
     }
 
     @Override

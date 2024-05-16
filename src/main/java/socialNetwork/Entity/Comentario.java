@@ -1,9 +1,6 @@
 package socialNetwork.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Comentario {
@@ -13,13 +10,16 @@ public class Comentario {
     private String comentario;
     private int id_uuario;
     private int id_publicacion;
-
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
     public Comentario() {}
 
-    public Comentario(String comentario, int id_uuario, int id_publicacion) {
+    public Comentario(String comentario, int id_uuario, int id_publicacion, Usuario usuario) {
         this.comentario = comentario;
         this.id_uuario = id_uuario;
         this.id_publicacion = id_publicacion;
+        this.usuario = usuario;
     }
 
     public Long getId_comentario() {
@@ -52,5 +52,13 @@ public class Comentario {
 
     public void setId_publicacion(int id_publicacion) {
         this.id_publicacion = id_publicacion;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
