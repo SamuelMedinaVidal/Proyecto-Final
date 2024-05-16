@@ -23,13 +23,12 @@ public class Usuario {
     private boolean es_administrador;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Publicacion> publicaciones = new ArrayList<>();
+    private List<Comentario> comentarios;
+
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Comentario> comentarios = new ArrayList<>();
-    public Usuario() {
-        this.publicaciones = new ArrayList<>();
-        this.comentarios = new ArrayList<>();
-    }
+    private List<Publicacion> publicaciones;
+
+    public Usuario() {}
 
     public Usuario(String nombre, String apellidos, String correo, Date fecha_de_nacimiento, String nombre_usuario, String contrasena, String foto_de_perfil, boolean es_administrador) {
         this.nombre = nombre;
@@ -39,9 +38,9 @@ public class Usuario {
         this.nombre_usuario = nombre_usuario;
         this.contrasena = contrasena;
         this.foto_de_perfil = foto_de_perfil;
-        this.es_administrador = es_administrador;
-        this.publicaciones = new ArrayList<>();
+        this.es_administrador = es_administrador;;
         this.comentarios = new ArrayList<>();
+        this.publicaciones = new ArrayList<>();
     }
 
     public Long getId_usuario() {
@@ -114,22 +113,6 @@ public class Usuario {
 
     public void setEs_administrador(boolean es_administrador) {
         this.es_administrador = es_administrador;
-    }
-
-    public List<Publicacion> getPublicaciones() {
-        return publicaciones;
-    }
-
-    public void setPublicaciones(List<Publicacion> publicaciones) {
-        this.publicaciones = publicaciones;
-    }
-
-    public List<Comentario> getComentarios() {
-        return comentarios;
-    }
-
-    public void setComentarios(List<Comentario> comentarios) {
-        this.comentarios = comentarios;
     }
 
     @Override

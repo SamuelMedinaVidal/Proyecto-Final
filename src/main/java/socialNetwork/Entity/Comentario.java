@@ -2,24 +2,30 @@ package socialNetwork.Entity;
 
 import jakarta.persistence.*;
 
+
 @Entity
 public class Comentario {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_comentario;
     private String comentario;
-    private int id_uuario;
-    private int id_publicacion;
+
+
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "id_publicacion", nullable = false)
+    private Publicacion publicacion;
+
+
     public Comentario() {}
 
-    public Comentario(String comentario, int id_uuario, int id_publicacion, Usuario usuario) {
+    public Comentario(String comentario, Usuario usuario, Publicacion publicacion) {
         this.comentario = comentario;
-        this.id_uuario = id_uuario;
-        this.id_publicacion = id_publicacion;
         this.usuario = usuario;
+        this.publicacion = publicacion;
     }
 
     public Long getId_comentario() {
@@ -38,27 +44,19 @@ public class Comentario {
         this.comentario = comentario;
     }
 
-    public int getId_uuario() {
-        return id_uuario;
-    }
-
-    public void setId_uuario(int id_uuario) {
-        this.id_uuario = id_uuario;
-    }
-
-    public int getId_publicacion() {
-        return id_publicacion;
-    }
-
-    public void setId_publicacion(int id_publicacion) {
-        this.id_publicacion = id_publicacion;
-    }
-
     public Usuario getUsuario() {
         return usuario;
     }
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Publicacion getPublicacion() {
+        return publicacion;
+    }
+
+    public void setPublicacion(Publicacion publicacion) {
+        this.publicacion = publicacion;
     }
 }

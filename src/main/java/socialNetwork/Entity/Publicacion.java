@@ -2,6 +2,8 @@ package socialNetwork.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Publicacion {
     @Id
@@ -12,18 +14,21 @@ public class Publicacion {
     private String imagen_api;
     private String imagen;
 
+
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
+
+    @OneToMany(mappedBy = "publicacion", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comentario> comentarios;
 
     public Publicacion() {}
 
-    public Publicacion(String titulo, int likes, String imagen_api, String imagen, Usuario usuario) {
+    public Publicacion(String titulo, int likes, String imagen_api, String imagen) {
         this.titulo = titulo;
         this.likes = likes;
         this.imagen_api = imagen_api;
         this.imagen = imagen;
-        this.usuario = usuario;
     }
 
 
@@ -65,13 +70,5 @@ public class Publicacion {
 
     public void setImagen(String imagen) {
         this.imagen = imagen;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 }
