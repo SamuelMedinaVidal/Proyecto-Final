@@ -115,6 +115,22 @@ public class Usuario {
         this.es_administrador = es_administrador;
     }
 
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
+    }
+
+    public List<Publicacion> getPublicaciones() {
+        return publicaciones;
+    }
+
+    public void setPublicaciones(List<Publicacion> publicaciones) {
+        this.publicaciones = publicaciones;
+    }
+
     @Override
     public String toString() {
         return id_usuario + " - " + nombre + " - " + apellidos + " - " + correo + " - " + fecha_de_nacimiento + " - " + nombre_usuario + " - " + contrasena + " - ";
