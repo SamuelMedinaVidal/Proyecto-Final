@@ -16,6 +16,7 @@ public class Usuario {
     private String nombre;
     private String apellidos;
     private String correo;
+    @Temporal(TemporalType.DATE)
     private Date fecha_de_nacimiento;
     private String nombre_usuario;
     private String contrasena;
@@ -23,10 +24,10 @@ public class Usuario {
     private boolean es_administrador;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Comentario> comentarios;
+    private List<Comentario> comentarios = new ArrayList<>();
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Publicacion> publicaciones;
+    private List<Publicacion> publicaciones = new ArrayList<>();
 
     public Usuario() {}
 
@@ -39,8 +40,6 @@ public class Usuario {
         this.contrasena = contrasena;
         this.foto_de_perfil = foto_de_perfil;
         this.es_administrador = es_administrador;;
-        this.comentarios = new ArrayList<>();
-        this.publicaciones = new ArrayList<>();
     }
 
     public Long getId_usuario() {

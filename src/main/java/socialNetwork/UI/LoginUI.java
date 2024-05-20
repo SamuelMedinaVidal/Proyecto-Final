@@ -1,6 +1,8 @@
 package socialNetwork.UI;
 
+import jakarta.persistence.JoinColumn;
 import org.springframework.stereotype.Component;
+import socialNetwork.Entity.Usuario;
 import socialNetwork.repository.UsuarioRepository;
 
 import javax.swing.*;
@@ -11,6 +13,8 @@ import java.awt.event.ActionListener;
 public class LoginUI {
     private UsuarioRepository usuarioRepository;
     private JFrame loginFrame;
+    private JTextField userText;
+    private JPasswordField password;
 
     public LoginUI(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
@@ -37,7 +41,7 @@ public class LoginUI {
         panel1.add(userLabel);
 
         //Cuadro de texto
-        JTextField userText = new JTextField(20);
+        userText = new JTextField(20);
         userText.setBounds(100, 10, 160, 25);
         panel1.add(userText);
 
@@ -45,7 +49,7 @@ public class LoginUI {
         passwordLabel.setBounds(10, 40, 80, 25);
         panel1.add(passwordLabel);
 
-        JPasswordField password = new JPasswordField(20);
+        password = new JPasswordField(20);
         password.setBounds(100, 40, 160, 25);
         panel1.add(password);
     }
@@ -67,5 +71,20 @@ public class LoginUI {
                 new RegistroUI(usuarioRepository);
             }
         });
+
+        iniciarSesion.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nombre = userText.getText();
+                String contrasena = new String(password.getPassword());
+
+                Usuario usuario = usuarioRepository.findByNombreAndContrasena(nombre,contrasena);
+
+                if (usuario == null) {
+                    JOptionPane.showMessageDialog(loginFrame, "Usuario o contraseña incorrecta");
+                }
+            }
+        });
+
     }
 }
