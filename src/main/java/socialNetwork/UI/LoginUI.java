@@ -75,10 +75,10 @@ public class LoginUI {
         iniciarSesion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String nombre = userText.getText();
+                String nombreUsuario = userText.getText();
                 String contrasena = new String(password.getPassword());
 
-                Usuario usuario = usuarioRepository.findByNombreAndContrasena(nombre,contrasena);
+                Usuario usuario = usuarioRepository.findByUsernameAndContrasena(nombreUsuario,contrasena);
 
                 if (usuario == null) {
                     JOptionPane.showMessageDialog(loginFrame, "Usuario o contraseña incorrecta");

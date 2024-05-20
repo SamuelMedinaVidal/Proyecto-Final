@@ -16,12 +16,12 @@ public class Usuario {
     private String nombre;
     private String apellidos;
     private String correo;
-    @Temporal(TemporalType.DATE)
-    private Date fecha_de_nacimiento;
-    private String nombre_usuario;
+
+    private String fecha_de_nacimiento;
+    private String username;
     private String contrasena;
     private String foto_de_perfil;
-    private boolean es_administrador;
+    private Boolean es_administrador;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comentario> comentarios = new ArrayList<>();
@@ -31,12 +31,12 @@ public class Usuario {
 
     public Usuario() {}
 
-    public Usuario(String nombre, String apellidos, String correo, Date fecha_de_nacimiento, String nombre_usuario, String contrasena, String foto_de_perfil, boolean es_administrador) {
+    public Usuario(String nombre, String apellidos, String correo, String fecha_de_nacimiento, String username, String contrasena, String foto_de_perfil, Boolean es_administrador) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.correo = correo;
         this.fecha_de_nacimiento = fecha_de_nacimiento;
-        this.nombre_usuario = nombre_usuario;
+        this.username = username;
         this.contrasena = contrasena;
         this.foto_de_perfil = foto_de_perfil;
         this.es_administrador = es_administrador;;
@@ -74,20 +74,20 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public Date getFecha_de_nacimiento() {
+    public String getFecha_de_nacimiento() {
         return fecha_de_nacimiento;
     }
 
-    public void setFecha_de_nacimiento(Date fecha_de_nacimiento) {
+    public void setFecha_de_nacimiento(String fecha_de_nacimiento) {
         this.fecha_de_nacimiento = fecha_de_nacimiento;
     }
 
-    public String getNombre_usuario() {
-        return nombre_usuario;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNombre_usuario(String nombre_usuario) {
-        this.nombre_usuario = nombre_usuario;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getContrasena() {
@@ -106,7 +106,7 @@ public class Usuario {
         this.foto_de_perfil = foto_de_perfil;
     }
 
-    public boolean isEs_administrador() {
+    public Boolean isEs_administrador() {
         return es_administrador;
     }
 
@@ -132,6 +132,6 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return id_usuario + " - " + nombre + " - " + apellidos + " - " + correo + " - " + fecha_de_nacimiento + " - " + nombre_usuario + " - " + contrasena + " - ";
+        return id_usuario + " - " + nombre + " - " + apellidos + " - " + correo + " - " + fecha_de_nacimiento + " - " + username + " - " + contrasena ;
     }
 }
