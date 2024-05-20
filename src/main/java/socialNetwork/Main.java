@@ -4,7 +4,7 @@ import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
-import socialNetwork.UI.NetworkUI;
+import socialNetwork.UI.LoginUI;
 
 import java.awt.*;
 
@@ -20,9 +20,7 @@ public class Main {
                 .run(args);
 
         EventQueue.invokeLater(() -> {
-            // obtenemos el objeto MusicUI a través de Spring de tal forma que inyecte los componentes en el constructor
-            NetworkUI networkUI = context.getBean(NetworkUI.class);
-
+            LoginUI loginUI = context.getBean(LoginUI.class);
         });
     }
 }
