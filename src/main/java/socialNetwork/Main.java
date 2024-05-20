@@ -22,7 +22,7 @@ public class Main {
         EventQueue.invokeLater(() -> {
             // obtenemos el objeto MusicUI a través de Spring de tal forma que inyecte los componentes en el constructor
             NetworkUI networkUI = context.getBean(NetworkUI.class);
-            networkUI.setVisible(true);
+
         });
     }
 }

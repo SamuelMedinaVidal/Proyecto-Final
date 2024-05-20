@@ -5,10 +5,21 @@ import org.springframework.stereotype.Component;
 import javax.swing.*;
 
 @Component
-public class NetworkUI extends JFrame {
+public class NetworkUI{
     public NetworkUI() {
-        setTitle("Login");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(400,600);
+        JFrame login = new JFrame("Login");
+        login.setSize(300,150);
+        login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JPanel log = new JPanel();
+        login.add(log);
+
+
+        login.setVisible(true);
+    }
+
+    public static void organizacion(JPanel log) {
+        log.setLayout(null);
+        JLabel userLabel = new JLabel("User");
+        userLabel.setBounds(100,20,20,20);
     }
 }
