@@ -18,7 +18,6 @@ public class Main {
                 .headless(false)
                 .web(WebApplicationType.NONE)
                 .run(args);
-
         EventQueue.invokeLater(() -> {
             LoginUI loginUI = context.getBean(LoginUI.class);
         });
