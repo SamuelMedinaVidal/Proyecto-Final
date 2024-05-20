@@ -78,7 +78,14 @@ public class RegistroUI {
         panel1.add(passwordText);
     }
 
-    public void botones() {
+    public void botones(JPanel panel1) {
+        panel1.setLayout(null);
+        JButton registarse = new JButton("Registrarse");
+        registarse.setBounds(10, 90, 160, 25);
+        panel1.add(registarse);
 
+        JButton volver = new JButton("Volver");
+        volver.setBounds(200, 90, 160, 25);
+        panel1.add(volver);
     }
 }
