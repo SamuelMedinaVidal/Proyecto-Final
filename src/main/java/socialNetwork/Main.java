@@ -12,6 +12,7 @@ import java.awt.*;
 public class Main {
     private static ApplicationContext context;
 
+
     public static void main(String[] args) {
         context = new SpringApplicationBuilder(Main.class)
                 .headless(false)
