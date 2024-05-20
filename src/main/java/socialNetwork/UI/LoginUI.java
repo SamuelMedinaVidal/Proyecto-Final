@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 public class LoginUI {
     private UsuarioRepository usuarioRepository;
     private JFrame loginFrame;
-    private JTextField userText;
+    public JTextField userText;
     private JPasswordField password;
 
     public LoginUI(UsuarioRepository usuarioRepository) {
@@ -82,6 +82,9 @@ public class LoginUI {
 
                 if (usuario == null) {
                     JOptionPane.showMessageDialog(loginFrame, "Usuario o contraseña incorrecta");
+                } else {
+                    loginFrame.dispose();
+                    new MainUI();
                 }
             }
         });
